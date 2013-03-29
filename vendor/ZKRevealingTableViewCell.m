@@ -232,8 +232,8 @@ static char BOOLRevealing;
 		CGPoint center = self.contentView.center;
 		center.x = newCenterPosition;
 		
-		self.contentView.layer.position = center;
-		
+		self.contentView.center = center;
+      
 	} else if (recognizer.state == UIGestureRecognizerStateEnded || recognizer.state == UIGestureRecognizerStateCancelled) {
         
 		// Swiping left, velocity is below 0.
