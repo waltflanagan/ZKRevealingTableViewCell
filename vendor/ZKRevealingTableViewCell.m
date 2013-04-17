@@ -72,24 +72,20 @@
 
 #pragma mark - Lifecycle
 
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        [self commonInit];
+    }
+    return self;
+}
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        self.direction = ZKRevealingTableViewCellDirectionBoth;
-		self.shouldBounce = YES;
-		self.pixelsToReveal = 0;
-		
-		self._panGesture = [[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(_pan:)] autorelease];
-		self._panGesture.delegate = self;
-		
-		[self addGestureRecognizer:self._panGesture];
-		
-		self.contentView.backgroundColor = [UIColor clearColor];
-		
-		UIView *backgroundView         = [[[UIView alloc] initWithFrame:self.contentView.frame] autorelease];
-		backgroundView.backgroundColor = [UIColor clearColor];
-		self.backView                  = backgroundView;
+        [self commonInit];
     }
     return self;
 }
@@ -98,22 +94,36 @@
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        self.direction = ZKRevealingTableViewCellDirectionBoth;
-		self.shouldBounce = YES;
-		self.pixelsToReveal = 0;
-		
-		self._panGesture = [[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(_pan:)] autorelease];
-		self._panGesture.delegate = self;
-		
-		[self addGestureRecognizer:self._panGesture];
-		
-		self.contentView.backgroundColor = [UIColor clearColor];
-		
-		UIView *backgroundView         = [[[UIView alloc] initWithFrame:self.contentView.frame] autorelease];
-		backgroundView.backgroundColor = [UIColor clearColor];
-		self.backView                  = backgroundView;
+        [self commonInit];
     }
     return self;
+}
+
+- (id)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self commonInit];
+    }
+    return self;
+}
+
+- (void)commonInit
+{
+    self.direction = ZKRevealingTableViewCellDirectionBoth;
+    self.shouldBounce = YES;
+    self.pixelsToReveal = 0;
+    
+    self._panGesture = [[[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(_pan:)] autorelease];
+    self._panGesture.delegate = self;
+    
+    [self addGestureRecognizer:self._panGesture];
+    
+    self.contentView.backgroundColor = [UIColor clearColor];
+    
+    UIView *backgroundView         = [[[UIView alloc] initWithFrame:self.contentView.frame] autorelease];
+    backgroundView.backgroundColor = [UIColor clearColor];
+    self.backView                  = backgroundView;
 }
 
 - (void)dealloc
