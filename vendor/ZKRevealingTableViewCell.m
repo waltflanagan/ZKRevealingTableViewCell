@@ -29,7 +29,6 @@
 
 @interface ZKRevealingTableViewCell ()
 
-@property (nonatomic, retain) UIPanGestureRecognizer   *_panGesture;
 @property (nonatomic, assign) CGFloat _initialTouchPositionX;
 @property (nonatomic, assign) CGFloat _initialHorizontalCenter;
 @property (nonatomic, assign) ZKRevealingTableViewCellDirection _lastDirection;

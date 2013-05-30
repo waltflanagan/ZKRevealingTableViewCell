@@ -46,6 +46,7 @@ typedef enum {
 
 @interface ZKRevealingTableViewCell : UITableViewCell
 
+@property (nonatomic, retain) UIPanGestureRecognizer   *_panGesture;
 @property (nonatomic, retain) IBOutlet UIView *backView;
 @property (nonatomic, assign, getter = isRevealing) BOOL revealing;
 @property (nonatomic, assign) id <ZKRevealingTableViewCellDelegate> delegate;
